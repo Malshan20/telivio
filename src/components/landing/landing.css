@@ -1,0 +1,272 @@
+/* ============================================================================
+   TELIVIO LANDING — "Daylight Control Room"
+   Design tokens, glass materials, dimensional shadows, type scale.
+   Scoped under .telivio-landing so it never leaks into the dark dashboard.
+   ============================================================================ */
+
+.telivio-landing {
+  --paper: #f7f8fc;
+  --paper-warm: #fbfaf7;
+  --ink: #14131f;
+  --ink-soft: rgba(20, 19, 31, 0.64);
+  --ink-faint: rgba(20, 19, 31, 0.4);
+  --line: rgba(20, 19, 31, 0.08);
+  --line-strong: rgba(20, 19, 31, 0.14);
+
+  --violet: #6d5bff;
+  --violet-deep: #4b3dd1;
+  --violet-pale: #eeebff;
+  --mint: #1fcb8c;
+  --mint-pale: #e3f9ef;
+  --coral: #ff6b57;
+  --coral-pale: #ffe9e4;
+  --amber: #f5a623;
+
+  --glass-fill: rgba(255, 255, 255, 0.65);
+  --glass-fill-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.9);
+
+  --shadow-soft: 0 1px 2px rgba(20, 19, 31, 0.04), 0 4px 10px rgba(20, 19, 31, 0.04);
+  --shadow-card: 0 2px 4px rgba(20, 19, 31, 0.04), 0 12px 28px rgba(20, 19, 31, 0.08), 0 32px 64px -16px rgba(20, 19, 31, 0.1);
+  --shadow-puffy: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 -1px 0 rgba(20, 19, 31, 0.06) inset, 0 2px 4px rgba(20, 19, 31, 0.06), 0 16px 32px -8px rgba(109, 91, 255, 0.18);
+  --shadow-float: 0 40px 100px -20px rgba(20, 19, 31, 0.25), 0 10px 30px -10px rgba(109, 91, 255, 0.15);
+
+  font-family: var(--font-inter), system-ui, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  position: relative;
+}
+
+.telivio-landing * {
+  box-sizing: border-box;
+}
+
+.telivio-landing .serif {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-variation-settings: 'SOFT' 40, 'WONK' 0;
+  letter-spacing: -0.01em;
+}
+
+.telivio-landing .mono {
+  font-family: var(--font-mono), monospace;
+}
+
+/* ─── Ambient backdrop: soft mesh, paper grain ───────────────────────────── */
+.telivio-landing .ambient-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(680px circle at 14% 8%, rgba(109, 91, 255, 0.14), transparent 60%),
+    radial-gradient(520px circle at 92% 18%, rgba(31, 203, 140, 0.1), transparent 60%),
+    radial-gradient(600px circle at 50% 100%, rgba(255, 107, 87, 0.07), transparent 60%);
+}
+
+.telivio-landing .grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+/* ─── Section rhythm ─────────────────────────────────────────────────────── */
+.telivio-landing section {
+  position: relative;
+  z-index: 1;
+  padding: 7rem 1.5rem;
+}
+
+.telivio-landing .container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .telivio-landing section {
+    padding: 4.5rem 1.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .telivio-landing section {
+    padding: 3.25rem 1rem;
+  }
+}
+
+/* ─── Type scale ─────────────────────────────────────────────────────────── */
+.telivio-landing .display-1 {
+  font-size: clamp(2.75rem, 6vw, 5.25rem);
+  line-height: 0.98;
+  font-weight: 480;
+  letter-spacing: -0.02em;
+}
+
+.telivio-landing .display-2 {
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  line-height: 1.05;
+  font-weight: 460;
+  letter-spacing: -0.015em;
+}
+
+.telivio-landing .eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--violet-deep);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.telivio-landing .eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.telivio-landing .lede {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+.telivio-landing .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 14px;
+  padding: 0.85rem 1.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  letter-spacing: -0.01em;
+}
+
+.telivio-landing .btn-primary {
+  background: linear-gradient(180deg, #7d6cff 0%, var(--violet) 55%, var(--violet-deep) 100%);
+  color: white;
+  box-shadow: var(--shadow-puffy);
+}
+
+.telivio-landing .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) inset, 0 -1px 0 rgba(20, 19, 31, 0.08) inset, 0 4px 8px rgba(20, 19, 31, 0.08), 0 22px 40px -8px rgba(109, 91, 255, 0.32);
+}
+
+.telivio-landing .btn-primary:active {
+  transform: translateY(0);
+}
+
+.telivio-landing .btn-ghost {
+  background: var(--glass-fill);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(12px);
+}
+
+.telivio-landing .btn-ghost:hover {
+  background: white;
+  border-color: var(--ink-faint);
+  transform: translateY(-1px);
+}
+
+.telivio-landing .btn-dark {
+  background: var(--ink);
+  color: white;
+  box-shadow: var(--shadow-card);
+}
+
+.telivio-landing .btn-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+}
+
+/* ─── Glass surfaces ──────────────────────────────────────────────────────── */
+.telivio-landing .glass-panel {
+  background: var(--glass-fill);
+  backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  box-shadow: var(--shadow-card);
+}
+
+.telivio-landing .flat-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ─── Animations ──────────────────────────────────────────────────────────── */
+@keyframes float-idle {
+  0%, 100% { transform: translateY(0px) rotate(var(--tilt, -3deg)); }
+  50% { transform: translateY(-10px) rotate(var(--tilt, -3deg)); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes ring-draw {
+  from { stroke-dashoffset: 251; }
+}
+
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-120%) rotate(8deg); }
+  100% { transform: translateX(220%) rotate(8deg); }
+}
+
+@keyframes count-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.telivio-landing .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.telivio-landing .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .telivio-landing * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Focus visibility ────────────────────────────────────────────────────── */
+.telivio-landing a:focus-visible,
+.telivio-landing button:focus-visible {
+  outline: 2px solid var(--violet);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
