@@ -52,33 +52,6 @@ export default function Hero() {
                 </a>
               </div>
             </Reveal>
-
-            <Reveal delay={300}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
-                <div style={{ display: 'flex' }}>
-                  {[
-                    ['#6D5BFF', 'JL'], ['#1FCB8C', 'AT'], ['#FF6B57', 'MW'], ['#F5A623', 'SK'],
-                  ].map(([color, init], i) => (
-                    <div
-                      key={i}
-                      style={{
-                        width: 30, height: 30, borderRadius: 999,
-                        background: color, border: '2px solid var(--paper)',
-                        marginLeft: i === 0 ? 0 : -9,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 10, fontWeight: 700, color: 'white',
-                        flexShrink: 0,
-                      }}
-                    >
-                      {init}
-                    </div>
-                  ))}
-                </div>
-                <span style={{ fontSize: 13.5, color: 'var(--ink-faint)' }}>
-                  Trusted by hiring teams at <strong style={{ color: 'var(--ink-soft)' }}>1,200+</strong> companies
-                </span>
-              </div>
-            </Reveal>
           </div>
 
           {/* Right: signature element */}
